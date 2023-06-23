@@ -1,3 +1,4 @@
+browser-choice=1
 browsers=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<web-browsers current\="0">\r\n<system/>\r\n<external location\="C\:\\Program Files\\Internet Explorer\\iexplore.exe" name\="Internet Explorer"/>\r\n<external location\="C\:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe" name\="Chrome"/>\r\n</web-browsers>
 eclipse.preferences.version=1
 internalWebBrowserHistory=http\://localhost\:8080/Demo1JSP/trang-chu|*|http\://localhost\:8080/Demo1JSP/|*|http\://localhost\:8080/Demo1JSP/trang-chu;jsessionid\=973EDCE3CEC10E8966E11687B715E5EC|*|http\://localhost\:8080/Demo1/|*|http\://localhost\:8080/DemoHTML1/WEB-INF/HTML1.html|*|http\://localhost\:8080/Spring-mvc/trang-chu|*|http\://localhost\:8080/Spring-mvc/|*|http\://localhost\:8080/Spring-mvc/trang-chu;jsessionid\=33901968589B55AD19173479CE4C4816|*|

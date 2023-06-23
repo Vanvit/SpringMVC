@@ -12,7 +12,7 @@
 <h1>Trang chủ</h1>
 <h1>Menu</h1>
 
-<%-- <%@ include file="menu.jsp" %> --%>
+<h1>Hello<strong th:text="${session.username }"></strong></h1>
 
 </body>
 </html>
