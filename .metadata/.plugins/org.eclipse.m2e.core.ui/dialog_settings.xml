@@ -36,11 +36,13 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="SpringBuoi1"/>
 			<item value="SpringBT2"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="SpringBuoi1"/>
 			<item value="SpringBT2"/>
 		</list>
 		<list key="version">
@@ -51,6 +53,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\admin\eclipse-workspace\SpringBuoi1\WebContent\WEB-INF\views\jsp\index.jsp"/>
 			<item value="C:\Users\admin\eclipse-workspace\Demo1JSP"/>
 			<item value="C:\Users\admin\eclipse-workspace\com.van"/>
 			<item value="C:\Users\admin\eclipse-workspace\JSP1\WebContent\WEB-INF\NewFile.jsp"/>
@@ -66,10 +69,13 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.ntvan3.demo1"/>
 		</list>
 		<list key="groupId">
+			<item value="com.ntvan3"/>
 		</list>
 		<list key="artifactId">
+			<item value="demo1"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
