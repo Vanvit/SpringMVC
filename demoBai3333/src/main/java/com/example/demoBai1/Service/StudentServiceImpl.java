@@ -1,15 +1,21 @@
 package com.example.demoBai1.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.omg.CORBA.portable.ApplicationException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContextException;
 import org.springframework.stereotype.Service;
 
 import com.example.demoBai1.Dao.StudentDao;
 import com.example.demoBai1.Entity.StudentEntity;
 import com.example.demoBai1.Exception.AplicationException;
 import com.example.demoBai1.Form.Student;
+import com.example.demoBai1.Model.StudentModel;
 @Service // cho vao thung IoC
 public class StudentServiceImpl implements StudentService{
-	
+	@Autowired
 	private StudentDao StudentDao;
 
 	@Override
@@ -47,4 +53,38 @@ public class StudentServiceImpl implements StudentService{
 		
 	}
 
+	@Override
+	public List<StudentModel> getStudents() {
+		
+		List<StudentEntity> entities = StudentDao.getStudents();
+		List<StudentModel> models = new ArrayList<StudentModel>();
+		
+		for(StudentEntity entity : entities) {
+			StudentModel model = new StudentModel();
+			model.setId(entity.getId());
+			model.setName(entity.getName());
+			model.setAge(entity.getAge());
+			model.setDoB(entity.getDoB());
+			model.setScore(entity.getScore());
+			
+			models.add(model);
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void deleteStudentById(String id) {
+
+		try {
+			Long.valueOf(id);
+		} catch (NumberFormatException e) {
+			throw new ApplicationContextException("ID phai la 1 so!");
+		}
+	}
+
 }
+
+
+
+

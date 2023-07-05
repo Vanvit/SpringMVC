@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Thêm sinh viên</h1>
+	<h2 style="color: red;" th:if="${message != null}">
+		<span th:text="${message}"></span>
+	</h2>
+	<form action="/createStudent" method="POST" >
+		<div>
+			<label>Vui lòng nhập tên SV: </label>
+			<input name="name" th:value="${form.name}"/>
+		</div>
+		<div>
+			<label>Vui lòng nhập tuổi SV: </label>
+			<input name="age" th:value="${form.age}"/>
+		</div>
+		<div>
+			<label>Vui lòng nhập ngày tháng năm sinh: </label>
+			<input name="dateOfBirth" th:value="${form.dateOfBirth}"/>
+		</div>	
+		<div>
+			<label>Vui lòng nhập điểm số: </label>
+			<input name="score" th:value="${form.score}"/>
+		</div>	
+		<div>
+			<button type="submit">Xác nhận</button>
+		</div>
+	</form>
+</body>
+</html>
