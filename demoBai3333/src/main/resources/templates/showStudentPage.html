@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+table, td, th {
+  border: 1px solid;
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+}
+</style>
 <meta charset="UTF-8">
 <title>List Student</title>
 </head>
 <body>
 	<h1>Danh sách sinh viên</h1>
-	<table>
+	<table style="width:50%" >
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -22,10 +32,14 @@
 				<td th:text="${student.id}"></td>
 				<td th:text="${student.name}"></td>
 				<td th:text="${student.age}"></td>
-				<td th:text="${student.dob}"></td>
+				<td th:text="${student.DoB}"></td>
 				<td th:text="${student.score}"></td>
 				<td >
-					<button>Delete</button>
+					<form th:action="@{|/deleteStudent/${student.id}|}">
+						<button type="submit">
+							Delete
+						</button>
+					</form>
 				</td>
 			</tr>
 		</tbody>

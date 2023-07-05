@@ -17,7 +17,7 @@ public class StudentModel {
 		this.id = id;
 		this.name = name;
 		this.age = age;
-		DoB = doB;
+		this.DoB = doB;
 		this.score = score;
 	}
 	public StudentModel() {
