@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+table, td, th {
+  border: 1px solid;
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+}
+</style>
+<meta charset="UTF-8">
+<title>List Student</title>
+</head>
+
+<a th:href="@{/homePage}">Back to HomePage</a>
+
+<body>
+	<h1>Danh sách sinh viên</h1>
+	<table style="width:50%" >
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>DateOfBirth</th>
+				<th>Score</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="student : ${students}">
+				<td th:text="${student.id}"></td>
+				<td th:text="${student.name}"></td>
+				<td th:text="${student.age}"></td>
+				<td th:text="${student.DoB}"></td>
+				<td th:text="${student.score}"></td>
+				<td >
+					<form th:action="@{/deleteStudent/} + ${student.id}">
+						<button type="submit">
+							Delete
+						</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

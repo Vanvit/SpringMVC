@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a th:href="@{/homePage}">Back to HomePage</a>
+
+<h1>Add Sinh Vien</h1>
+<h2 style="color: red"  th:if="${message != null}">
+<span th:text="${message}"></span>
+
+</h2>
+
+<form action="/createStudent" method="post" style="background-color: pink; font-size: 30px;">
+
+  <label for="lname">Name: </label><br>
+  <input type="text" id="name" name="name" th:value="${form.name}"> <br><br>
+  <label for="lname">Age: </label><br>
+  <input type="text" id="age" name="age" th:value="${form.age}"><br><br> 
+  <label for="lname">DoB: </label><br>
+  <input type="text" id="doB" name="DoB" th:value="${form.DoB}"><br><br>   
+  <label for="lname">Score: </label><br>
+  <input type="text" id="doB" name="score" th:value="${form.score}"><br><br>   
+  
+  <input type="submit" value="Submit">
+  
+</form>
+</body>
+</html>

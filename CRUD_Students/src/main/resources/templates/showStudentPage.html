@@ -35,7 +35,7 @@ table {
 				<td th:text="${student.DoB}"></td>
 				<td th:text="${student.score}"></td>
 				<td >
-					<form th:action="@{|/deleteStudent/${student.id}|}">
+					<form th:action="@{/deleteStudent/${student.id}}" method="GET"> 
 						<button type="submit">
 							Delete
 						</button>

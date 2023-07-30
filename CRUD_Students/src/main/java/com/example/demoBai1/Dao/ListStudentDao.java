@@ -31,7 +31,9 @@ public class ListStudentDao implements StudentDao{
 
 		Iterator<StudentEntity> iterator = students.iterator();
 		while(iterator.hasNext()) {
+			
 			StudentEntity studentEntity = iterator.next();
+			
 			if (studentEntity.getId().equals(id)) {
 				iterator.remove();
 				return;
