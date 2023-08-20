@@ -27,50 +27,56 @@ public class SecurityConfig {
 	}
 	@Autowired
 	private UserDetailsService userDetailsService;
+/*	
+	@Bean
+	public UserDetailsService userDetailService() {
+		InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
+		// Add User
+		UserDetails user1 = User 
+				.withUsername("user")
+				.password("user")
+				.roles("USER")
+				.authorities(new ArrayList<>())
+				.build();
+		UserDetails user2 = User 
+				.withUsername("admin")
+				.password("admin")
+				.roles("ADMIN")// role
+				.build();
+		
+		
+		inMemoryUserDetailsManager.createUser(user1);
+		inMemoryUserDetailsManager.createUser(user2);
+		
+		return inMemoryUserDetailsManager;
+	}
 	
-//	@Bean
-//	public UserDetailsService userDetailService() {
-//		InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();
-//		// Add User
-//		UserDetails user1 = User 
-//				.withUsername("user")
-//				.password("user")
-//				.roles("USER")
-//				.authorities(new ArrayList<>())
-//				.build();
-//		UserDetails user2 = User 
-//				.withUsername("admin")
-//				.password("admin")
-//				.roles("ADMIN")// role
-//				.build();
-//		
-//		
-//		inMemoryUserDetailsManager.createUser(user1);
-//		inMemoryUserDetailsManager.createUser(user2);
-//		
-//		return inMemoryUserDetailsManager;
-//	}
-	
-	
+	*/
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity
+				.cors()
+				.disable()
+				.csrf()
+				.disable()
 				.authorizeHttpRequests(
 						http -> http
-						//phan quyen cho admin
-						.antMatchers("/admin**")
-						.hasAuthority("ADMIN")
-						// cho phep vao trang login ma k can login
-						.antMatchers("/login")
-						.permitAll()
+						//phan quyen cho admin. Controller
+						.antMatchers("/admin**").hasAuthority("ADMIN") 
+						
+						// cho phep vao trang login ma k can login. Api
+						.antMatchers("/admin/**").hasAuthority("ADMIN")
+						//permitAll == cho phep het
+						.antMatchers("/login","/images/**").permitAll()
 						// tat ca cac duong dan khac thi can dang nhap
+//						.antMatchers("/").permitAll()
 						.anyRequest()
 						.authenticated()
 						)
 				.logout(httpLogout ->
 					// duong dan log out method post
 					httpLogout.logoutUrl("/logout")
-					// duong dan sau khi log out thanh cong
+					// duong dan sau khi log out thanh cong, chuyen huong ve trang login
 					.logoutSuccessUrl("/login")
 				)
 				.formLogin(HttpLogin -> HttpLogin.loginPage("/login")
@@ -83,6 +89,8 @@ public class SecurityConfig {
 						rememberMe -> rememberMe.rememberMeServices(rememberMeServices(userDetailsService)
 						))
 				.userDetailsService(userDetailsService)
+				.httpBasic()
+				.and()
 				.build();
 	}
 	@Bean
@@ -105,14 +113,15 @@ public class SecurityConfig {
 		TokenBasedRememberMeServices rememberMe = new TokenBasedRememberMeServices("myKey", userDetailsService);
 		return rememberMe;
 	}
-/*	@Bean // phien ban moi
+/*	
+	@Bean // phien ban moi
 	RememberMeServices rememberMeServices(UserDetailsService userDetailsService) {
 		RememberMeTokenAlgorithm encodingAlgorithm = RememberMeTokenAlgorithm.SHA256;
 		TokenBasedRememberMeServices rememberMe = new TokenBasedRememberMeServices("myKey", userDetailsService,
 				encodingAlgorithm);
 		rememberMe.setMatchingAlgorithm(RememberMeTokenAlgorithm.MD5);
 		return rememberMe;
-	}*/
-	
+	}
+	*/
 
 }

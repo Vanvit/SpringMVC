@@ -1,17 +1,35 @@
 package com.example.jdbcExample.entity;
 
-import java.sql.Date;
 
+import java.util.Date;
+
+import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @MappedSuperclass
-
+@EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 	
+	@CreatedDate
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
+	@LastModifiedDate
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifierDate;
-	private Date createBy;
-	private Date modifierBy;
+	@CreatedBy
+	private String createBy;
+	@LastModifiedBy
+	private String modifierBy;
+	
+	
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -24,18 +42,19 @@ public class BaseEntity {
 	public void setModifierDate(Date modifierDate) {
 		this.modifierDate = modifierDate;
 	}
-	public Date getCreateBy() {
+	public String getCreateBy() {
 		return createBy;
 	}
-	public void setCreateBy(Date createBy) {
+	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
-	public Date getModifierBy() {
+	public String getModifierBy() {
 		return modifierBy;
 	}
-	public void setModifierBy(Date modifierBy) {
+	public void setModifierBy(String modifierBy) {
 		this.modifierBy = modifierBy;
 	}
+	
 	
 
 }
